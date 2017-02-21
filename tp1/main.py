@@ -11,7 +11,11 @@ def loadImage(src):
     return img
 
 
+# TODO: When giving an image full of blue pixels, it's showing a black image. Find why!
+
+
 def isSkin(img):
+    """Return an image of white pixels """
     res = np.array([np.array([np.array([0 for k in range(3)]) for j in range(len(img[0]))]) for i in range(len(img))])
     for i in range(len(img)):
         for j in range(len(img[0])):
@@ -20,13 +24,15 @@ def isSkin(img):
 
 
 def rgbSkinPixel(pixel):
-    B, G, R = pixel[0], pixel[1], pixel[2]
-    if R > 95 and G > 40 and R > 20 and\
-        max(pixel) - min(pixel) > 15 and\
-        abs(int(R) - int(G)) > 15 and\
-        R > G and R > B:
-        return np.array([255, 255, 255])
-    return np.array([0, 0, 0])
+    """Return a white pixel if the input is a skin pixel"""
+    # B, G, R = pixel[0], pixel[1], pixel[2]
+    # if R > 95 and G > 40 and R > 20 and\
+    #     max(pixel) - min(pixel) > 15 and\
+    #     abs(int(R) - int(G)) > 15 and\
+    #     R > G and R > B:
+    #     return np.array([255, 255, 255])
+    # return np.array([0, 0, 0])
+    return np.array([255, 0, 0])
 
 
 if __name__ == '__main__':
